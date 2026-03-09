@@ -31,7 +31,7 @@ const SYMBOL_ASCENDED = "<i class='reznoricon-ascended'></i>"; // Ascended
 const SYMBOL_RADIANT = "<i class='reznoricon-radiant'></i>"; // Radiant
 const SYMBOL_EMPTY = "<span class='padding-left'></span>"; // No symbol
 const FLEUR_DIVIDE = "<div class='horizontal-line'></div>";
-const WIKI_LINK = "https://hollowknight.fandom.com/wiki/";
+const WIKI_LINK = "https://hollowknight.wiki/w/";
 
 const ROOT = document.documentElement;
 const SCROLL_BUTTON = document.querySelector(".scroll-up-button");
@@ -337,7 +337,7 @@ function GenerateInnerHTML(db) {
               obj.div = divFlex;
               obj.span = ["", ""];
 
-              (entries[entry].permadeathMode) ? Img = maskSteel: Img = maskNormal;
+              (entries[entry].permadeathMode) ? Img = maskSteel : Img = maskNormal;
 
               for (let i = 0, total = entries[entry].amountTotal; i < total; i++) {
                 obj.textSuffix += Img;
@@ -415,7 +415,7 @@ function GenerateInnerHTML(db) {
 
         break;
 
-        /* #################### Hints (hints) #################### */
+      /* #################### Hints (hints) #################### */
 
       case "hints":
         obj.b = ["", ""];
@@ -493,56 +493,56 @@ function GenerateInnerHTML(db) {
                 /* -------- Prevents blurring when a player has already completed the entry --------- */
                 obj.span[0] = "<span class='spoiler-span-green'>";
                 break;
-  
+
               case "bindingShell":
                 obj.icon = SYMBOL_BINDING_SHELL;
 
                 /* -------- Prevents blurring when a player has already completed the entry --------- */
                 obj.span[0] = "<span class='spoiler-span-green'>";
                 break;
-  
+
               case "bindingCharms":
                 obj.icon = SYMBOL_BINDING_CHARMS;
 
                 /* -------- Prevents blurring when a player has already completed the entry --------- */
                 obj.span[0] = "<span class='spoiler-span-green'>";
                 break;
-  
+
               case "bindingSoul":
                 obj.icon = SYMBOL_BINDING_SOUL;
 
                 /* -------- Prevents blurring when a player has already completed the entry --------- */
                 obj.span[0] = "<span class='spoiler-span-green'>";
                 break;
-              
+
               case "bindingAll":
                 obj.icon = SYMBOL_BINDING_ALL;
 
                 /* -------- Prevents blurring when a player has already completed the entry --------- */
                 obj.span[0] = "<span class='spoiler-span-green'>";
                 break;
-              
+
               case "attuned":
                 obj.icon = SYMBOL_ATTUNED;
 
                 /* -------- Prevents blurring when a player has already completed the entry --------- */
                 obj.span[0] = "<span class='spoiler-span-green'>";
                 break;
-              
+
               case "ascended":
                 obj.icon = SYMBOL_ASCENDED;
 
                 /* -------- Prevents blurring when a player has already completed the entry --------- */
                 obj.span[0] = "<span class='spoiler-span-green'>";
                 break;
-              
+
               case "radiant":
                 obj.icon = SYMBOL_RADIANT;
 
                 /* -------- Prevents blurring when a player has already completed the entry --------- */
                 obj.span[0] = "<span class='spoiler-span-green'>";
                 break;
-              
+
               case "red":
                 obj.icon = SYMBOL_FALSE;
                 break;
@@ -732,7 +732,7 @@ function CompletionFillNoSave(section) {
       symbol = "";
   }
 
-  percentBox = `<div class='percent-box'>${(id === "hk-intro") ? 0: section.maxPercent}${symbol}</div>`;
+  percentBox = `<div class='percent-box'>${(id === "hk-intro") ? 0 : section.maxPercent}${symbol}</div>`;
   if (!section.hasOwnProperty("maxPercent")) percentBox = "";
 
   fullString += `<h2 id='${h2id}'>${h2}${percentBox}</h2>`;
@@ -769,9 +769,9 @@ function CompletionFill(section) {
   let percentBox = "";
   let fullString = "";
 
-  (section.hasOwnProperty("percent")) ? cp = section.percent: cp = 0;
+  (section.hasOwnProperty("percent")) ? cp = section.percent : cp = 0;
 
-  (section.hasOwnProperty("midPercent")) ? midP = section.midPercent: midP = 0;
+  (section.hasOwnProperty("midPercent")) ? midP = section.midPercent : midP = 0;
 
   // Don't use percent-box for Essentials, Achievements, Statistics etc.
   if (!section.hasOwnProperty("maxPercent")) {
@@ -785,10 +785,10 @@ function CompletionFill(section) {
     // Shards and Fragments correct calculations
     if (section.id === "hk-maskshards") {
       let perc = section.percent;
-      (perc % 4) ? cp = Math.floor(perc / 4): cp = perc / 4;
+      (perc % 4) ? cp = Math.floor(perc / 4) : cp = perc / 4;
     } else if (section.id === "hk-vesselfragments") {
       let perc = section.percent;
-      (perc % 3) ? cp = Math.floor(perc / 3): cp = perc / 3;
+      (perc % 3) ? cp = Math.floor(perc / 3) : cp = perc / 3;
     }
 
     // switches the box to red when a section (h2) is 0
@@ -855,7 +855,7 @@ function CompletionFill(section) {
         symbol = "";
     }
 
-    percentBox = `<div class='percent-box${cl}'>${(section.id === "hk-intro") ? cp: `${cp}${section.maxPercent}`}${symbol}</div>`;
+    percentBox = `<div class='percent-box${cl}'>${(section.id === "hk-intro") ? cp : `${cp}${section.maxPercent}`}${symbol}</div>`;
   }
 
   fullString += `\t${h2id}${h2}${percentBox}</h2>\n`;
@@ -1153,15 +1153,15 @@ function StorageAvailable(type) {
     return true;
   } catch (e) {
     return e instanceof DOMException && (
-        // everything except Firefox
-        e.code === 22 ||
-        // Firefox
-        e.code === 1014 ||
-        // test name field too, because code might not be present
-        // everything except Firefox
-        e.name === 'QuotaExceededError' ||
-        // Firefox
-        e.name === 'NS_ERROR_DOM_QUOTA_REACHED') &&
+      // everything except Firefox
+      e.code === 22 ||
+      // Firefox
+      e.code === 1014 ||
+      // test name field too, because code might not be present
+      // everything except Firefox
+      e.name === 'QuotaExceededError' ||
+      // Firefox
+      e.name === 'NS_ERROR_DOM_QUOTA_REACHED') &&
       // acknowledge QuotaExceededError only if there's something already stored
       (storage && storage.length !== 0);
   }
